@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block container %}
+    <div class="page-header text-center py-3">
+        <h1 class="fs-3 fw-lighter">{{ receita.nome }}</h1>
+        <hr>
+    </div>
+    <div class="row">
+        <div class="col-sm-4">
+            <img src="{{ url_for('imagem', nome_arquivo=capa) }}" class="card-img-top rounded" style="height: 340px;" alt="...">
+            <hr>
+            <p class="h6 fw-lighter text-center"><strong>Autor(a):</strong> {{ receita.autor }}</p>
+        </div>
+        <div class="col-sm-3">
+            <p class="fs-5 fw-lighter"><strong>Ingredientes</strong></p>
+            <ul class="fs-6 fw-lighter">
+                {% for ingrediente in ingredientes %}
+                    <li>
+                        {{ ingrediente }}
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+        <div class="col-sm-4">
+            <p class="fs-5 fw-lighter mb-3"><strong>Modo de Preparo</strong></p>
+            {% for modo_preparo in modo_de_preparo %}
+                <p class="fs-6 fw-lighter" id="paragrafo">{{ modo_preparo }}</p>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}
